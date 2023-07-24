@@ -162,7 +162,10 @@
                     <!-- item-->
                     <a class="dropdown-item" href="{{route('profile.edit')}}"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Logout</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="dropdown-item text-danger" type="submit"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Logout</button>
+                    </form>
                 </div>
             </div>
 

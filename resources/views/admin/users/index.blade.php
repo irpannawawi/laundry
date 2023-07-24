@@ -24,15 +24,27 @@
             <div class="card-header">
                 <h5 class="float-start">Data Pengguna</h5>
                 <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addModal"><i
-                        class="fa fa-user-plus"></i> Tambah data</button>
-            </div>
-            <div class="card-body">
+                    class="fa fa-user-plus"></i> Tambah data</button>
+                </div>
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <form action="{{route('users')}}" method="GET">
+                            @csrf
+                            <div class="input-group col-3">
+                                <input type="search" name="keyword" id="keyword" class="form-control">
+                                <input type="submit" value="Cari" class="btn btn-secondary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered mt-2">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>Nama Lengkap</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>userid</th>
@@ -47,6 +59,7 @@
                                 <tr>
                                     <td>{{ $n++ }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td>{{ $user->full_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ strtoupper($user->role) }}</td>
                                     <td>{{ $user->id }}</td>
@@ -63,6 +76,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col-lg-6 float-end">
+                            {{ $users->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,6 +104,10 @@
                             <input type="text" class="form-control" name="name" autocomplete="off">
                         </div>
                         <div class="form-group mb-2">
+                            <label for="full_name">Nama Lengkap</label>
+                            <input type="text" class="form-control" name="full_name" autocomplete="off">
+                        </div>
+                        <div class="form-group mb-2">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" placeholder="example@domain.com" name="email"
                                 autocomplete="off">
@@ -95,6 +117,7 @@
                             <label for="role">Role</label>
                             <select name="role" id="role" class="form-control">
                                 <option value="admin">ADMIN</option>
+                                <option value="owner">OWNER</option>
                                 <option value="pengguna">PENGGUNA</option>
                             </select>
                         </div>
@@ -103,12 +126,12 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password">
                         </div>
-                        <x-primary-button>{{ __('Simpan') }}</x-primary-button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -33,6 +33,13 @@
                         <input type="text" value="{{$user->name}}" class="form-control" name="name" id="editName" autocomplete="off" required>
                         <input type="hidden" value="{{$user->id}}" name="id"  required>
                     </div>
+
+                    
+                    <div class="form-group mb-2">
+                        <label for="full_name">Nama Lengkap</label>
+                        <input type="text" value="{{$user->full_name}}" class="form-control" name="full_name" id="editFullName" autocomplete="off" required>
+                    </div>
+
                     <div class="form-group mb-2">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="editEmail" placeholder="example@domain.com" name="email"
@@ -43,6 +50,7 @@
                         <label for="role">Role</label>
                         <select name="role" id="role" class="form-control">
                             <option {{$user->role=='admin'?'selected':''}} value="admin">ADMIN</option>
+                            <option {{$user->role=='owner'?'selected':''}} value="owner">OWNER</option>
                             <option {{$user->role=='pengguna'?'selected':''}} value="pengguna">PENGGUNA</option>
                         </select>
                     </div>
@@ -52,7 +60,7 @@
                         <input type="password" class="form-control" name="password">
                         <small>Kosongkan jika tidak akan merubah password</small>
                     </div>
-                    <x-primary-button>{{ __('Simpan') }}</x-primary-button>
+                    <input type="submit" value="Simpan" class="btn btn-primary">
                 </form>
             </div>
         </div>

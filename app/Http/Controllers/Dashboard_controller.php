@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Dashboard_controller extends Controller
 {
-    //
+    
     public function index(){
         $data = [
             'jumlah_pengguna'=> User::get()->count(),

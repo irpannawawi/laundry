@@ -8,9 +8,18 @@ use Illuminate\Support\Facades\Hash;
 
 class Users_controller extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $keyword = '';
+        if($request->input('keyword')!=null){
+            $keyword = $request->input('keyword');
+        }
+        
         $data = [
-            'users'=> User::get(),
+            'users'=> User::where('full_name','LIKE', '%'.$keyword.'%')
+            ->orderBy('id', 'ASC')
+            ->paginate(
+                $perPage = 10, $columns = ['*'], $pageName = 'users'
+            ),
         ];
         return view('admin.users.index', $data);
     }
@@ -19,6 +28,7 @@ class Users_controller extends Controller
     {
         $userdata = [
             'name'=>$request->input('name'),
+            'full_name'=>$request->input('full_name'),
             'email'=>$request->input('email'),
             'role'=>$request->input('role'),
             'password'=>Hash::make($request->input('password')),
@@ -55,9 +65,6 @@ class Users_controller extends Controller
     public function delete(Request $request)
     {
         $id = $request->id;
-        
-        Log::where('user_id', $id)->delete();
-        Tagihan::where('user_id', $id)->delete();
         User::where('id', $id)->delete();
         return redirect()->back();
     }
