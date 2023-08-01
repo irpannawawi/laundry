@@ -26,7 +26,7 @@ class TransactionController extends Controller
         // add payment
         $payment = new Payment;
         $payment->payment_type = $payment_method;
-        $payment->status = 'Menunggu ditimbang';
+        $payment->status = 'Menunggu pembayaran';
         $payment->price = 0;
         $payment->save();
 
@@ -40,20 +40,38 @@ class TransactionController extends Controller
 
     
         // add items
+        $total_price = 0;
         foreach($request->input('items') as $item){
             $produk = Produk::find($item);
+            $price = $produk->price;
+            $berat = 1;
             
+            if($produk->product_name == 'Pakaian Harian'){
+                if($jenis_layanan == 'Cuci + Setrika'){
+                    $price = $produk->price + 2000;
+                }
+                $berat = $request->input('berat');
+            }
+
+            if($jenis_layanan == null){
+                $jenis_layanan = '-';
+            } 
+
             $data = [
                 'product_name'=>$produk->product_name,
                 'picture'=>$produk->picture,
-                'price'=>0,
+                'price'=>$price,
                 'id_transaction'=>$trans->id_transaction,
                 'setrika'=>$jenis_layanan,
                 'is_deleted'=>0,
-                'berat'=>0
+                'berat'=>$berat
             ];
+            $total_price += $price;
         }
         TransactionItem::insert($data);
+
+        $payment->price = $total_price;
+        $payment->save();
 
         // make cart empty
         Cart::where('id_user', Auth::user()->id)->delete();

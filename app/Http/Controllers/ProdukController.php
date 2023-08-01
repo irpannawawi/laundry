@@ -30,7 +30,7 @@ class ProdukController extends Controller
         // insering to database
         $data = [
             'product_name'=> $request->input('product_name'),
-            'descriptions'=>$request->input('description'),
+            'descriptions'=>'-',
             'price'=>$request->input('price'),
             'picture'=>$file_name,
             'is_deleted'=>false
@@ -58,7 +58,7 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($request->input('id_product'));
         $produk->product_name = $request->input('product_name');
-        $produk->descriptions = $request->input('description');
+        $produk->descriptions = '-';
         $produk->price = $request->input('price');
 
         if(!empty($request->file('picture'))){

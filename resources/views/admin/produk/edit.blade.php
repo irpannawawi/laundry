@@ -29,10 +29,6 @@
                         <input type="hidden" value="{{$produk->id_product}}" name="id_product" required>
                     </div>
                     <div class="form-group mb-2">
-                        <label for="description">Deskripsi</label>
-                        <textarea class="form-control" name="description" rows="6" required>{{$produk->descriptions}}</textarea>
-                    </div>
-                    <div class="form-group mb-2">
                         <label for="price">Harga</label>
                         <input value="{{$produk->price}}" type="number" class="form-control" placeholder="Rp. ...." name="price" autocomplete="off"
                             required>

@@ -54,6 +54,10 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="/#layanan">Layanan</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#panduan">Panduan</a>
+                        </li>
                         @if (Auth::user()==null)
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Login/Register</a>

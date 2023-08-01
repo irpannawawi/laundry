@@ -63,7 +63,18 @@
                                 <p class="text-muted text-center">Keranjang Kosong</p>
                             @endif
                             <div class="row">
+                                @php
+                                    $has_pakaian_harian = False;
+                                @endphp 
+
                                 @foreach ($cart_list as $item)
+                                @php
+                                    if($item->product->product_name == 'Pakaian Harian' && $has_pakaian_harian == False){
+                                        $has_pakaian_harian = True;
+                                    }else {
+                                        $has_pakaian_harian = False;
+                                    }
+                                @endphp
                                 <input type="hidden" name="items[]" value="{{$item->id_product}}">
                                     <div class="col-md-4 mb-4">
                                         <div class="card h-100">
@@ -87,7 +98,9 @@
                                     </div>
                                 @endforeach
                             </div>
+                            @if ($has_pakaian_harian)
                             <div class="row">
+                                    
                                 <div class="col-12">
                                     <h4>Jenis Layanan</h4>
                                     <div class="form-group">
@@ -97,7 +110,15 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-12">
+                                    <h4>Berat Pakaian (Kg)</h4>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="berat" id="berat" value="1" />
+                                    </div>
+                                </div>
                             </div>
+                            @endif
                             <div class="row">
                                 <div class="col-12">
                                     <h4>Penjemputan</h4>

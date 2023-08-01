@@ -57,7 +57,48 @@
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        {{dd($transaction_list)}}
+                        <table class="table table-borderd">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Layanan</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php 
+                                $n=1;
+                                @endphp
+                                @foreach ($transaction_list as $tr)
+                                    <tr>
+                                        <td>{{$n++}}</td>
+                                        <td>{{$tr->created_at}}</td>
+                                        <td>
+                                            <ol>
+                                                @foreach ($tr->items as $tri)
+                                                    <li>{{$tri->product_name}}</li>
+                                                @endforeach
+                                            </ol>
+                                        </td>
+                                        <td>
+                                            {{$tr->payment->status}}
+                                        </td>
+                                        <td>
+                                            Rp. {{number_format($tr->payment->price, 0, ',', '.')}},-
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">Bayar</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

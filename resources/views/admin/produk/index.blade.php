@@ -38,9 +38,7 @@
                                             </div>
                                             <div class="col-md-6 col-lg-6 col-xl-6">
                                                 <h5>{{$produk->product_name}}</h5>
-                                                <p class="text-truncate mb-4 mb-md-0">
-                                                    {{$produk->descriptions}}
-                                                </p>
+                                                
                                             </div>
                                             <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                                                 <div class="d-flex flex-row align-items-center mb-1">
@@ -82,10 +80,6 @@
                         <div class="form-group mb-2">
                             <label for="product_name">Nama Produk</label>
                             <input type="text" class="form-control" name="product_name" autocomplete="off" required>
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="description">Deskripsi</label>
-                            <textarea class="form-control" name="description" required ></textarea>
                         </div>
                         <div class="form-group mb-2">
                             <label for="price">Harga</label>

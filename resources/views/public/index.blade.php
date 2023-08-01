@@ -20,6 +20,11 @@
                     <img src="assets/images/gallery/brand2.png" alt="brand1" class="img-fluid">
                 </div>
             </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <img src="assets/images/gallery/brand3.png" alt="brand1" class="img-fluid">
+                </div>
+            </div>
         </div>
         <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
             <i class="fas fa-chevron-left"></i>
