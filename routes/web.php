@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Dashboard_controller;
 use App\Http\Controllers\Log_controller;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Users_controller;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +23,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // NO AUTH REQUIRED
-Route::get('/', function () {
-    return view('public.index');
-});
+Route::get('/', [PublicController::class, 'index']);
 
-Route::get('/dashboard',[Dashboard_controller::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+    Route::get('/dashboard',[Dashboard_controller::class, 'index'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -50,7 +52,21 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
 });
 
 // PUBLIC SECTION
-Route::get('/public', [PublicController::class, 'index'])->name('public');
-Route::get('/public/profile', [PublicController::class, 'index'])->name('publicProfile');
+Route::middleware(['auth', 'checkRole:customer'])->group(function () {
+    Route::get('/public', [PublicController::class, 'index'])->name('public');
+    Route::get('/public/profile', [PublicController::class, 'profile'])->name('publicProfile');
+    Route::put('/public/profile/update/{id}', [PublicController::class, 'update_profile'])->name('publicProfileUpdate');
+
+    // cart
+    // add to Cart
+    Route::get('/addToCart/{id_product}', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::get('/removeFromCart/{id_product}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+    Route::get('/cart', [CartController::class, 'cartView'])->name('cart');
+    
+    // transaction 
+    Route::get('/transaction', [TransactionController::class, 'view'])->name('transaction');
+    Route::post('/addTransaction', [TransactionController::class, 'add'])->name('addTransaction');
+    
+});
 
 require __DIR__.'/auth.php';
