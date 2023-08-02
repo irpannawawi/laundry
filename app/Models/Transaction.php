@@ -20,8 +20,18 @@ class Transaction extends Model
     {
         return $this->hasOne(Payment::class, 'id_payment', 'id_payment');
     }
+    public function jadwal_jemput(): HasOne
+    {
+        return $this->hasOne(JadwalJemput::class, 'id_transaction', 'id_transaction');
+    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
     public function items(): HasMany
     {
         return $this->hasMany(TransactionItem::class, 'id_transaction', 'id_transaction');
     }
+
+
 }

@@ -14,6 +14,14 @@ return new class extends Migration
     public function up()
     {
         //
+        Schema::create('jadwal_antar', function (Blueprint $table) {
+            $table->increments('id_jadwal_antar')->primary;
+            $table->string('id_transaction');
+            $table->string('tanggal');
+            $table->string('jam');
+            $table->string('status');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +32,6 @@ return new class extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('jadwal_antar');
     }
 };

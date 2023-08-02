@@ -68,7 +68,5 @@
                 </div>
             </div>
         </section>
-        <!-- End Featured Product -->
-
-        
+        <!-- End Featured Product --> 
 @endsection

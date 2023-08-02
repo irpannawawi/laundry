@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Dashboard_controller;
 use App\Http\Controllers\Log_controller;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
@@ -46,6 +47,11 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/produk/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('/produk', [ProdukController::class, 'update'])->name('produk.update');
     Route::delete('/produk', [ProdukController::class, 'delete'])->name('produk.delete');
+    
+    
+    // Order
+    Route::get('/order', [OrderController::class, 'index'])->name('order');
+
 
     
     
@@ -66,6 +72,8 @@ Route::middleware(['auth', 'checkRole:customer'])->group(function () {
     // transaction 
     Route::get('/transaction', [TransactionController::class, 'view'])->name('transaction');
     Route::post('/addTransaction', [TransactionController::class, 'add'])->name('addTransaction');
+    Route::post('/addPaymentInfo', [TransactionController::class, 'addPaymentInfo'])->name('addPaymentInfo');
+    Route::get('/acc_transaction', [TransactionController::class, 'acc'])->name('accTransaction');
     
 });
 

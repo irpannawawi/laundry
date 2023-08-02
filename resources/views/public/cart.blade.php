@@ -71,8 +71,6 @@
                                 @php
                                     if($item->product->product_name == 'Pakaian Harian' && $has_pakaian_harian == False){
                                         $has_pakaian_harian = True;
-                                    }else {
-                                        $has_pakaian_harian = False;
                                     }
                                 @endphp
                                 <input type="hidden" name="items[]" value="{{$item->id_product}}">

@@ -32,7 +32,7 @@
 
                 
                 <li>
-                    <a href="{{route('produk')}}" class=" waves-effect">
+                    <a href="{{route('order')}}" class=" waves-effect">
                         <i class="fas fa-exclamation-triangle"></i>
                         <span>Pesanan Baru</span>
                     </a>
