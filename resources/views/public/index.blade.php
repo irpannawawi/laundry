@@ -36,7 +36,7 @@
     <!-- End Banner Hero -->
 
         <!-- Start Featured Product -->
-        <section class="bg-light" id="layanan">
+        <section class="grad" id="layanan">
             <div class="container py-5">
                 <div class="row text-center py-3">
                     <div class="col-lg-6 m-auto">

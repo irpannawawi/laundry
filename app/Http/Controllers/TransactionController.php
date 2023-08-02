@@ -96,6 +96,7 @@ class TransactionController extends Controller
 
         // make cart empty
         Cart::where('id_user', Auth::user()->id)->delete();
+        
         // redirect to transaction page
         return redirect()->route('transaction');
     }
@@ -108,7 +109,7 @@ class TransactionController extends Controller
         $trans = Transaction::find($request->input('id_transaction'));
         $trans->payment->payment_info = $file_name;
         $trans->payment->status = 'Paid';
-        $trans->save();
+        $trans->payment->save();
         return redirect()->back();
     }
     public function convert_tanggal($tgl)

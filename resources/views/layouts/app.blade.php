@@ -4,7 +4,7 @@
     <head>
     
         <meta charset="utf-8">
-        <title>Flot Chart | Veltrix - Admin & Dashboard Template</title>
+        <title>Naya Laundry- Admin & Dashboard </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
@@ -54,7 +54,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                   </script>
-                                  HPW05<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Adli & Bima.</span>
+                                  HPW05<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by M. Akbar.</span>
                             </div>
                         </div>
                     </div>

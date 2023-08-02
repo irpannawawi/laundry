@@ -60,6 +60,14 @@
                         <span>Cetak Laporan</span>
                     </a>
                 </li>
+                <li class="menu-title">Lain-lain</li>
+
+                <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="fa fa-book"></i>
+                        <span>Panduan Penggunaan</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

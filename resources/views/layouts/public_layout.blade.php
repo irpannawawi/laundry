@@ -25,18 +25,22 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
+<style>
+    .grad {
+    background-image: linear-gradient(75deg, rgb(57, 162, 249), rgb(110, 236, 255), rgb(53, 53, 255));
+    }
+</style>
 @yield('manualCss')
 </head>
 
-<body>
+<body class="grad">
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light shadow bg-light">
         <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-info logo h3 align-self-center" href="index.html">
-                Naya <br><small>Laundry</small>
-            </a>
+            <img src="{{url('/')}}/assets/images/logo1.png" alt="" class="d-inline-block align-text-top m-2" height="45"> 
+            <a class="navbar-brand text-info logo h3 mt-2 mr-3" href="{{url('/')}}">Naya <small>Laundry</small>
+        </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
