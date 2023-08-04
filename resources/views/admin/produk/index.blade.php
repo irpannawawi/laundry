@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <h6 class="page-title">Produk</h6>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">Welcome to HPW05 Dashboard</li>
+                    <li class="breadcrumb-item active"> </li>
                 </ol>
             </div>
         </div>
@@ -46,9 +46,13 @@
                                                 </div>
                                                 <div class="d-flex flex-column mt-4">
                                                     <a href="{{route('produk.edit', ['id'=>$produk->id_product])}}" class="btn btn-primary btn-sm" type="button">Edit</a>
-                                                    <button class="btn btn-outline-danger btn-sm mt-2" type="button">
+                                                    <form action="{{route('produk.delete', ['id'=>$produk->id_product])}}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-outline-danger form-control btn-sm mt-2"  onclick="return confirm('Hapus produk?')" type="submit">
                                                         Delete
                                                     </button>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>

@@ -6,6 +6,7 @@
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>
+        <th>Alamat</th>
         <th>Aksi</th>
     </tr>
     @php
@@ -35,8 +36,11 @@
                     <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},- ({{ $order->payment->payment_type }})
                     </td>
                     <td>
-                        <a href="{{route('accTransaction')}}" onclick="return confirm('Terima pesanan?')" class="btn btn-primary">Terima</a>
-                        <a href="{{route('accTransaction')}}" onclick="return confirm('Terima pesanan?')" class="btn btn-danger">Batal</a>
+                        {{$order->user->address}}
+                        {{$order->user->phone}}
+                    </td>
+                    <td>
+                        <button>Terima</button>
                     </td>
                 </tr>
             @endif

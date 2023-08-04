@@ -50,10 +50,10 @@
                     @foreach($products as $product)
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="{{Storage::url('produk/'.$product->picture)}}" class="card-img-top" alt="...">
+                            <img src="{{Storage::url('produk/'.$product->picture)}}" class="card-img-top" height="200" width="200" alt="...">
                             <div class="card-body">
                                 <ul class="list-unstyled d-flex justify-content-between">
-                                    <li class="text-muted text-right">Rp. {{number_format($product->price, 0, ',','.')}}/Kg</li>
+                                    <li class=" text-right">Rp. {{number_format($product->price, 0, ',','.')}}{{$product->product_name == 'Pakaian Harian'?'/Kg':''}}</li>
                                 </ul>
                                 <p href="#" class="h2 text-decoration-none text-dark">{{$product->product_name}}</p>
                                 <div class="col-12">

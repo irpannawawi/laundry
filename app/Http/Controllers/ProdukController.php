@@ -82,8 +82,10 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produk $produk)
+    public function destroy(Request $request, $id)
     {
         //
+        Produk::find($id)->delete();
+        return redirect()->route('produk');
     }
 }

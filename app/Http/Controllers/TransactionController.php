@@ -73,7 +73,7 @@ class TransactionController extends Controller
                 'is_deleted' => 0,
                 'berat' => $berat
             ];
-            $total_price += $price;
+            $total_price += $price*$berat;
             TransactionItem::insert($data);
         }
 
@@ -154,5 +154,10 @@ class TransactionController extends Controller
                 break;
         }
         return $t[2].' '.$tanggal.' '.$t[0];
+    }
+
+    public function proccess()
+    {
+        
     }
 }

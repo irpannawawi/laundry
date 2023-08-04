@@ -46,7 +46,7 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::post('/produk', [Produkcontroller::class, 'store'])->name('produk.store');
     Route::get('/produk/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('/produk', [ProdukController::class, 'update'])->name('produk.update');
-    Route::delete('/produk', [ProdukController::class, 'delete'])->name('produk.delete');
+    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.delete');
     
     
     // Order
