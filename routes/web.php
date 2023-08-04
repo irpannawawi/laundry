@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\Dashboard_controller;
 use App\Http\Controllers\Log_controller;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProccessController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
@@ -51,6 +52,8 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     
     // Order
     Route::get('/order', [OrderController::class, 'index'])->name('order');
+    // Proccess
+    Route::get('/proccess', [proccessController::class, 'index'])->name('proccess');
 
 
     

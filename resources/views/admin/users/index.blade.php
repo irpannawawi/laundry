@@ -118,7 +118,7 @@
                             <select name="role" id="role" class="form-control">
                                 <option value="admin">ADMIN</option>
                                 <option value="owner">OWNER</option>
-                                <option value="pengguna">PENGGUNA</option>
+                                <option value="customer">CUSTOMER</option>
                             </select>
                         </div>
 

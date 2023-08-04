@@ -51,7 +51,7 @@
                         <select name="role" id="role" class="form-control">
                             <option {{$user->role=='admin'?'selected':''}} value="admin">ADMIN</option>
                             <option {{$user->role=='owner'?'selected':''}} value="owner">OWNER</option>
-                            <option {{$user->role=='customer'?'selected':''}} value="customer">PENGGUNA</option>
+                            <option {{$user->role=='customer'?'selected':''}} value="customer">CUSTOMER</option>
                         </select>
                     </div>
 

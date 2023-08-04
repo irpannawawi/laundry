@@ -54,7 +54,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                   </script>
-                                  HPW05<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by M. Akbar.</span>
+                                  <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Muhammad Akbar</span>
                             </div>
                         </div>
                     </div>

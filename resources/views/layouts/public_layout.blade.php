@@ -135,7 +135,6 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2023 Naya Laundry 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
                         </p>
                     </div>
                 </div>

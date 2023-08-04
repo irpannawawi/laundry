@@ -39,7 +39,7 @@
                 </li>
                 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('proccess')}}" class=" waves-effect">
                         <i class="fas fa-clipboard-list"></i>
                         <span>Sedang Diproses</span>
                     </a>

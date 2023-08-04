@@ -77,7 +77,7 @@
                                     <div class="col-md-4 mb-4">
                                         <div class="card h-100">
                                             <img src="{{ Storage::url('produk/' . $item->product->picture) }}"
-                                                class="card-img-top" alt="...">
+                                                class="card-img-top" alt="..." height="140" width="200">
                                             <div class="card-body">
                                                 <ul class="list-unstyled d-flex justify-content-between">
                                                     <li class="text-muted text-right">Rp.
