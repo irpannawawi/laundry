@@ -15,7 +15,7 @@
             {{ session('success') }}</p>
     @endif
     <div class="row">
-        <div class="card border-top">
+        <div class="card border-top border-2 border-primary border-start">
             <div class="card-header">
                 @if (Session::has('msg'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -33,7 +33,7 @@
                   </ul>
             </div>
             <div class="card-body">
-                <div id="pagePesananBaru">@include('admin.order.pesanan_baru')</div>
+                <div id="pagePesananBaru">@include('admin.laporan.keuangan')</div>
                 <div id="pagePenjemputan" style="display: none;">@include('admin.order.jadwal_jemput')</div>
             </div>
         </div>
