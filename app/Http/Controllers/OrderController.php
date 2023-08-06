@@ -17,4 +17,28 @@ class OrderController extends Controller
         return view('admin.order.index', $data);
     }
 
+    public function accept_order($id)
+    {
+        $trans = Transaction::find($id);
+        $trans->transaction_status = 'accepted';
+        if($trans->jadwal_jemput!=null){
+            $trans->jadwal_jemput->status = 'Barang telah diterima toko';
+        }
+        $trans->save();
+
+        return redirect()->back()->with('msg', 'Pesanan telah diterima');
+    }
+
+    public function cancel_order($id)
+    {
+        $trans = Transaction::find($id);
+        $trans->transaction_status = 'canceled';
+        if($trans->jadwal_jemput!=null){
+            $trans->jadwal_jemput->status = 'Barang telah diterima toko';
+        }
+        $trans->save();
+
+        return redirect()->back()->with('msg', 'Pesanan telah diterima');
+    }
+
 }

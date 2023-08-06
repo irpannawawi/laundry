@@ -20,6 +20,11 @@ class TransactionController extends Controller
         $data['transaction_list'] = Transaction::where('id_user', Auth::user()->id)->orderBy('id_transaction', 'DESC')->get();
         return view('public.transaction', $data);
     }
+    public function history()
+    {
+        $data['transaction_list'] = Transaction::where('id_user', Auth::user()->id)->orderBy('id_transaction', 'DESC')->get();
+        return view('public.history', $data);
+    }
     public function add(Request $request)
     {
         $jenis_layanan = $request->input('jenis_layanan');
@@ -77,7 +82,7 @@ class TransactionController extends Controller
             TransactionItem::insert($data);
         }
 
-        $payment->price = $total_price * $berat;
+        $payment->price = $total_price;
         $payment->save();
 
         // add jadwal 

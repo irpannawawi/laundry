@@ -24,6 +24,11 @@ class Transaction extends Model
     {
         return $this->hasOne(JadwalJemput::class, 'id_transaction', 'id_transaction');
     }
+
+    public function jadwal_antar(): HasOne
+    {
+        return $this->hasOne(JadwalAntar::class, 'id_transaction', 'id_transaction');
+    }
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'id_user');

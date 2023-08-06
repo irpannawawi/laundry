@@ -6,13 +6,16 @@
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>
+        <th>Jadwal Pengiriman</th>
+        <th>Alamat</th>
         <th>Aksi</th>
     </tr>
     @php
         $n = 1;
     @endphp
     @foreach ($orderList as $order)
-            @if ($order->jadwal_jemput==null)
+        @if ($order->transaction_status == 'shipment' && $order->jadwal_antar != null)
+
                 <tr>
                     <td>{{ $n++ }}</td>
                     <td>ORD{{ $order->id_transaction }}</td>
@@ -29,24 +32,17 @@
                             @endforeach
                         </ol>
                     </td>
-                    <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},- ({{ $order->payment->payment_type }}) 
-                        @if($order->payment->payment_type=='Transfer')
-                        <a href="#" onclick="get_payment_info('{{$order->payment->payment_info}}')" data-bs-toggle="modal" data-bs-target="#infoPayment"><i class="fa fa-eye"></i></a>
-                        @endif
+                    <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},- ({{ $order->payment->payment_type }})
                     </td>
                     <td>
-                        @if ($order->transaction_status != 'caceled')
-                            
-                        <div class="btn-group">
-                            <a href="{{route('accTransaction', ['id'=>$order->id_transaction])}}" onclick="return confirm('Terima pesanan?')" class="btn btn-primary">Terima</a>
-                            <a href="{{route('cancelTransaction', ['id'=>$order->id_transaction])}}" onclick="return confirm('Batalkan pesanan?')" class="btn btn-danger">Batal</a>
-                        </div>
-                        @else
-                        Pesanan dibatalkan
-                        @endif
+                        {{$order->user->address}}
+                        {{$order->user->phone}}
+                    </td>
+                    <td>
+                        <a href="{{ route('toFinish', ['id' => $order->id_transaction]) }}" onclick="return confirm('Selesaikan pesanan?')" class="btn btn-success">Selesai</a>
                     </td>
                 </tr>
-            @endif
+
+        @endif
     @endforeach
 </table>
-

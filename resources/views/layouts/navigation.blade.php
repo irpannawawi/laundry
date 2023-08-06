@@ -46,7 +46,7 @@
                 </li>
                 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('transaction_finished')}}" class=" waves-effect">
                         <i class="fa fa-check"></i>
                         <span>Selesai</span>
                     </a>
@@ -55,7 +55,7 @@
                 <li class="menu-title">Laporan</li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('laporan')}}" class=" waves-effect">
                         <i class="fa fa-print"></i>
                         <span>Cetak Laporan</span>
                     </a>

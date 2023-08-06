@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Dashboard_controller;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\Log_controller;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProccessController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 // NO AUTH REQUIRED
 Route::get('/', [PublicController::class, 'index']);
+Route::get('/invoice/{id}', [PrintController::class, 'invoice'])->name('invoice');
 
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
@@ -52,11 +55,21 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     
     // Order
     Route::get('/order', [OrderController::class, 'index'])->name('order');
+    Route::get('/acc_transaction/{id}', [OrderController::class, 'accept_order'])->name('accTransaction');
+    Route::get('/cancel_transaction/{id}', [OrderController::class, 'cancel_order'])->name('cancelTransaction');
+
+
     // Proccess
-    Route::get('/proccess', [proccessController::class, 'index'])->name('proccess');
-
-
+    Route::get('/proccess', [ProccessController::class, 'index'])->name('proccess');
+    Route::get('/to_proccess/{id}', [ProccessController::class, 'toProccess'])->name('toProccess');
+    Route::get('/complete_proccess/{id}', [ProccessController::class, 'completeProccess'])->name('completeProccess');
+    Route::post('/to_shipment', [ProccessController::class, 'toShipment'])->name('toShipment');
+    Route::get('/to_finish/{id}', [ProccessController::class, 'toFinish'])->name('toFinish');
     
+    // selesai
+    Route::get('/transaction_finished', [ProccessController::class, 'transaction_finished'])->name('transaction_finished');
+    
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
     
 });
 
@@ -74,9 +87,11 @@ Route::middleware(['auth', 'checkRole:customer'])->group(function () {
     
     // transaction 
     Route::get('/transaction', [TransactionController::class, 'view'])->name('transaction');
+    Route::get('/transaction_history', [TransactionController::class, 'history'])->name('history');
     Route::post('/addTransaction', [TransactionController::class, 'add'])->name('addTransaction');
     Route::post('/addPaymentInfo', [TransactionController::class, 'addPaymentInfo'])->name('addPaymentInfo');
-    Route::get('/acc_transaction', [TransactionController::class, 'acc'])->name('accTransaction');
+    Route::get('/confirmShipment/{id}', [ProccessController::class, 'toFinish'])->name('confirmShipment');
+    
     
 });
 

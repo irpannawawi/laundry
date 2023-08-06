@@ -39,14 +39,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('transaction') }}" class="nav-link active">
+                            <a href="{{ route('transaction') }}" class="nav-link link-dark">
                                 <i class="fa fa-table"></i>
                                 Transaksi
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{route('history')}}" class="nav-link link-dark">
+                            <a href="{{route('history')}}" class="nav-link active">
                                 <i class="fa fa-history"></i>
                                 History
                             </a>
@@ -67,7 +67,7 @@
                                     <th>Status Transaksi</th>
                                     <th>Status Pembayaran</th>
                                     <th nowrap>Total</th>
-                                    <th>Aksi</th>
+                                    <th>Struk/Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,7 +75,7 @@
                                     $n = 1;
                                 @endphp
                                 @foreach ($transaction_list as $tr)
-                                @if ($tr->transaction_status!='finish')
+                                @if ($tr->transaction_status=='finish' || $tr->transaction_status=='canceled')
                                     <tr>
                                         <td>{{ $n++ }}</td>
                                         <td>ORD{{ $tr->id_transaction }}</td>
@@ -96,55 +96,25 @@
                                             </ol>
                                         </td>
                                         <td>
-                                            @if ($tr->jadwal_jemput != null && $tr->jadwal_antar == null && $tr->transaction_status == 'ordered')
-                                                @if ($tr->payment->payment_type == 'COD' || $tr->payment->status == 'Paid')
-                                                    <b>{{ $tr->jadwal_jemput->status }},</b> <small>Pakaian akan dijemput
-                                                        pada
-                                                        {{ $tr->jadwal_jemput->tanggal }} pukul
-                                                        {{ $tr->jadwal_jemput->jam }}
-                                                        WIB</small>
-                                                @else
-                                                    Menunggu pembayaran
-                                                @endif
+                                            @if ($tr->transaction_status == 'canceled')
+                                            <span class="text-danger">Pesanan anda dibatalkan</span>
                                             @else
-                                                @if ($tr->transaction_status == 'ordered')
-                                                    Menunggu Pakaian diantarkan ke toko
-                                                @elseif ($tr->transaction_status == 'accepted')
-                                                    Pesanan telah diterima oleh toko dan akan segera diproses
-                                                @elseif ($tr->transaction_status == 'proccess' && $tr->jadwal_antar == null)
-                                                    Pesanan dalam proses oleh toko
-                                                @elseif ($tr->transaction_status == 'shipment' && $tr->jadwal_antar != null)
-                                                    Pesanan akan diantar oleh toko pada tanggal
-                                                    {{ $tr->jadwal_antar->tanggal }} Pukul {{ $tr->jadwal_antar->jam }}
-                                                    WIB
-                                                @elseif ($tr->transaction_status == 'shipment' && $tr->jadwal_antar == null)
-                                                    Pesanan siap untuk diambil, silahkan kunjungi toko untuk mengambil
-                                                    pesanan
-                                                    anda.
-                                                @elseif ($tr->transaction_status == 'canceled')
-                                                    <span class="text-danger">Pesanan anda dibatalkan</span>
-                                                @endif
+                                            
+                                            <span class="text-success">Pesanan Selesai</span>
                                             @endif
                                         </td>
                                         <td>
                                             @if ($tr->transaction_status != 'canceled')
-                                                {{ $tr->payment->status == 'Paid' ? 'Lunas' : $tr->payment->status }}({{ $tr->payment->payment_type }})
+                                                Lunas({{ $tr->payment->payment_type }})
                                             @endif
                                         </td>
                                         <td nowrap>
                                             Rp. {{ number_format($tr->payment->price, 0, ',', '.') }},-
                                         </td>
-                                        <td>
-                                            @if ($tr->payment->payment_type != 'COD' && $tr->payment->status != 'Paid')
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal"
-                                                    onclick="fill_id({{ $tr->id_transaction }})">Bayar</button>
-                                            @endif
-
-                                            @if ($tr->transaction_status == 'shipment' && $tr->jadwal_antar == null)
-                                                <a class="btn btn-success btn-sm"
-                                                    href="{{ route('confirmShipment', ['id' => $tr->id_transaction]) }}"
-                                                    onclick="fill_id({{ $tr->id_transaction }})">Konfirmasi</a>
+                                        <td nowrap>
+                                            @if ($tr->transaction_status != 'canceled')
+                <a href="{{route('invoice', ['id'=>$tr->id_transaction])}}" class="link" target="__blank"><i class="fa fa-print"></i> Cetak</a>
+                                                
                                             @endif
                                         </td>
                                     </tr>

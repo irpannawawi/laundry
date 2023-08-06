@@ -3,7 +3,7 @@
     <div class="page-title-box">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h6 class="page-title">Pesanan</h6>
+                <h6 class="page-title">Laporan</h6>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active"> </li>
                 </ol>
@@ -25,10 +25,10 @@
                 @endif
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Pesanan Baru</a>
+                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Laporan keuangan</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="tabPenjemputan" href="#">Jadwal Penjemputan</a>
+                      <a class="nav-link" id="tabPenjemputan" href="#">Laporan Penjualan</a>
                     </li>
                   </ul>
             </div>

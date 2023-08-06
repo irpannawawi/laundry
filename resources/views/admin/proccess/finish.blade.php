@@ -3,7 +3,7 @@
     <div class="page-title-box">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h6 class="page-title">Pesanan</h6>
+                <h6 class="page-title">Transaksi Selesai</h6>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active"> </li>
                 </ol>
@@ -16,25 +16,9 @@
     @endif
     <div class="row">
         <div class="card border-top">
-            <div class="card-header">
-                @if (Session::has('msg'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Berhasil</strong> {{Session::get('msg')}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                @endif
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Pesanan Baru</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="tabPenjemputan" href="#">Jadwal Penjemputan</a>
-                    </li>
-                  </ul>
-            </div>
+            
             <div class="card-body">
-                <div id="pagePesananBaru">@include('admin.order.pesanan_baru')</div>
-                <div id="pagePenjemputan" style="display: none;">@include('admin.order.jadwal_jemput')</div>
+                <div id="pagePesananBaru">@include('admin.proccess.pesanan_selesai')</div>
             </div>
         </div>
     </div>
