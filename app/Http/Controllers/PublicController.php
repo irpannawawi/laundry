@@ -24,6 +24,11 @@ class PublicController extends Controller
         return view('public.index', $data);
     }
 
+    public function about(){
+        
+        return view('public.about');
+    }
+
     public function profile()
     {
         $data = ['profile'=>User::find(Auth::user()->id)];

@@ -53,7 +53,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="{{url('/')}}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/')}}">Tentang</a>
+                            <a class="nav-link" href="{{route('about')}}">Tentang</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/#layanan">Layanan</a>

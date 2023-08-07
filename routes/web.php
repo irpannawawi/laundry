@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 // NO AUTH REQUIRED
 Route::get('/', [PublicController::class, 'index']);
+Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/invoice/{id}', [PrintController::class, 'invoice'])->name('invoice');
 
 
