@@ -85,13 +85,13 @@
                                                 </ul>
                                                 <p href="#" class="h2 text-decoration-none text-dark">
                                                     {{ $item->product->product_name }}</p>
-                                                <div class="col-12">
+                                                </div>
+                                                <div class="card-footer">
                                                     @if (Auth::user() != null)
                                                         <a href="{{ route('removeFromCart', ['id_product' => $item->product->id_product]) }}"
-                                                            class="btn  btn-danger float-end">Batal</a>
+                                                            class="btn btn-danger float-end" >Batal</a>
                                                     @endif
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
