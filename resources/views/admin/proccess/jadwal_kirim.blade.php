@@ -18,7 +18,7 @@
     @foreach ($orderList as $order)
         @if ($order->transaction_status == 'shipment' && $order->jadwal_antar != null)
 
-                <tr class="text-center">
+                <tr>
                     <td>{{ $n++ }}</td>
                     <td>ORD{{ $order->id_transaction }}</td>
                     <td>{{ $order->created_at }}</td>
