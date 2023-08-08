@@ -2,7 +2,7 @@
     <tr>
         <th>No</th>
         <th>Order Id</th>
-        <th>Tanggal pesan</th>
+        <th>Tanggal Pesan</th>
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>

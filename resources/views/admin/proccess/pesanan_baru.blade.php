@@ -1,8 +1,8 @@
 <table class="table table-sm table-borderd table-striped">
-    <tr>
+    <tr class="text-center">
         <th>No</th>
         <th>Order Id</th>
-        <th>Tanggal pesan</th>
+        <th>Tanggal Pesan</th>
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>

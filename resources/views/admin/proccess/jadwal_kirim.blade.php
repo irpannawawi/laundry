@@ -2,7 +2,7 @@
     <tr>
         <th>No</th>
         <th>Order Id</th>
-        <th>Tanggal pesan</th>
+        <th>Tanggal Pesan</th>
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>
@@ -18,7 +18,7 @@
     @foreach ($orderList as $order)
         @if ($order->transaction_status == 'shipment' && $order->jadwal_antar != null)
 
-                <tr>
+                <tr class="text-center">
                     <td>{{ $n++ }}</td>
                     <td>ORD{{ $order->id_transaction }}</td>
                     <td>{{ $order->created_at }}</td>
@@ -36,6 +36,7 @@
                     </td>
                     <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},- ({{ $order->payment->payment_type }})
                     </td>
+                    <td>{{$order->jadwal_antar->tanggal.' Jam '. $order->jadwal_antar->jam. 'WIB'}}</td>
                     <td>
                         {{$order->user->address}}
                         {{$order->user->phone}}
