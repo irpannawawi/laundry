@@ -6,7 +6,9 @@
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>
+        @if(Auth::user()->role == 'admin')
         <th>Aksi</th>
+        @endif
     </tr>
     @php
         $n = 1;
@@ -34,9 +36,10 @@
                         <a href="#" onclick="get_payment_info('{{$order->payment->payment_info}}')" data-bs-toggle="modal" data-bs-target="#infoPayment"><i class="fa fa-eye"></i></a>
                         @endif
                     </td>
+                    @if(Auth::user()->role == 'admin')
                     <td>
                         @if ($order->transaction_status != 'caceled')
-                            
+                        
                         <div class="btn-group">
                             <a href="{{route('accTransaction', ['id'=>$order->id_transaction])}}" onclick="return confirm('Terima pesanan?')" class="btn btn-primary">Terima</a>
                             <a href="{{route('cancelTransaction', ['id'=>$order->id_transaction])}}" onclick="return confirm('Batalkan pesanan?')" class="btn btn-danger">Batal</a>
@@ -45,6 +48,7 @@
                         Pesanan dibatalkan
                         @endif
                     </td>
+                    @endif
                 </tr>
             @endif
     @endforeach

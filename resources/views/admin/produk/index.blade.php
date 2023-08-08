@@ -18,8 +18,10 @@
         <div class="card border-top">
             <div class="card-header">
                 <h5 class="float-start">Data Produk</h5>
+                @if(Auth::user()->role == 'admin')
                 <button class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addModal"><i
-                        class="fa fa-user-plus"></i> Tambah data</button>
+                    class="fa fa-plus"></i> Tambah data</button>
+                    @endif
             </div>
             <div class="card-body">
                 <section style="background-color: #eee;">
@@ -45,13 +47,15 @@
                                                     <h4 class="mb-1 me-1">Rp. {{number_format($produk->price, 0, ',', '.')}};-</h4>
                                                 </div>
                                                 <div class="d-flex flex-column mt-4">
+                                                    @if(Auth::user()->role == 'admin')
                                                     <a href="{{route('produk.edit', ['id'=>$produk->id_product])}}" class="btn btn-primary btn-sm" type="button">Edit</a>
                                                     <form action="{{route('produk.delete', ['id'=>$produk->id_product])}}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-outline-danger form-control btn-sm mt-2"  onclick="return confirm('Hapus produk?')" type="submit">
-                                                        Delete
-                                                    </button>
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-outline-danger form-control btn-sm mt-2"  onclick="return confirm('Hapus produk?')" type="submit">
+                                                            Delete
+                                                        </button>
+                                                        @endif
                                                 </form>
                                                 </div>
                                             </div>

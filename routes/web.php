@@ -32,7 +32,7 @@ Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/invoice/{id}', [PrintController::class, 'invoice'])->name('invoice');
 
 
-Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+Route::middleware(['auth', 'checkRole:admin,owner'])->group(function () {
     Route::get('/dashboard',[Dashboard_controller::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -71,6 +71,9 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/transaction_finished', [ProccessController::class, 'transaction_finished'])->name('transaction_finished');
     
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+    Route::get('/laporan_keuangan/{start}/{end}', [PrintController::class, 'print_keuangan'])->name('printKeuangan');
+    Route::get('/laporan_penjualan/{start}/{end}', [PrintController::class, 'print_penjualan'])->name('printPenjualan');
+
     
 });
 

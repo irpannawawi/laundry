@@ -57,7 +57,7 @@
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <form action="{{ route('publicProfileUpdate', ['id' => Auth::user()->id]) }}" method="POST">
+                        <form action="{{ route('publicProfileUpdate', ['id' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="row gutters">
@@ -90,6 +90,12 @@
                                         <label for="phone">Nomor Telepon</label>
                                         <input type="text" class="form-control" id="phone"
                                             placeholder="Enter phone number" name="phone" value="{{ $profile->phone }}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone">Foto profil</label>
+                                        <input type="file" class="form-control" id="avatar" name="avatar" >
                                     </div>
                                 </div>
                             </div>

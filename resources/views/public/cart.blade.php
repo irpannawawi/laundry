@@ -162,7 +162,7 @@
                                 <div class="col-md-6 col-lg-6">
                                     <h4>Metode Pembayaran</h4>
                                     <select class="form-control" name="pembayaran" id="pembayaran">
-                                        <option value="COD">COD</option>
+                                        <option value="COD">COD (Bayar di Tempat)</option>
                                         <option value="Transfer">Transfer</option>
                                     </select>
                                 </div>

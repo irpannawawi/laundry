@@ -52,6 +52,14 @@ class PublicController extends Controller
             }
         }
 
+        // has image 
+        if(!empty($request->file('avatar'))){
+            // upload new pic
+            $file = $request->file('avatar');
+            $file_name = date('dmYHis').'.'.$file->extension();
+            $path = $file->storeAs('public/avatar', $file_name);
+            $user->avatar = $file_name;
+        }
         $user->save();
         return redirect()->back()->with('message', $message);
     }

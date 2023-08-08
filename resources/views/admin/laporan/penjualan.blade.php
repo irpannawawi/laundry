@@ -12,7 +12,7 @@
         <tr>
             <td>
                 <input type="date" class="form-control" name="tgl_start" value="{{ $tgl_start }}">
-                <input type="hidden" class="form-control" name="page" value="1">
+                <input type="hidden" class="form-control" name="page" value="2">
             </td>
             <td>
                 <input type="date" class="form-control" name="tgl_end" value="{{ $tgl_end }}">
@@ -21,7 +21,7 @@
                 <input type="submit" class="form-control btn btn-primary" value="Pilih" name="search">
             </td>
             <td>
-                <a target="__blank" class="btn btn-info form-control" href="{{route('printKeuangan', ['start'=>$tgl_start, 'end'=>$tgl_end])}}"><div class="i fa fa-print"></div> Print</a>
+                <a target="__blank" class="btn btn-info form-control" href="{{route('printPenjualan', ['start'=>$tgl_start, 'end'=>$tgl_end])}}"><div class="i fa fa-print"></div> Print</a>
             </td>
         </tr>
     </table>
@@ -29,47 +29,34 @@
 <table class="table table-sm table-borderd">
     <tr>
         <th colspan="6">
-            <h2 align="center">Laporan Keuangan</h2>
+            <h2 align="center">Laporan Penjualan</h2>
         </th>
     </tr>
     <tr class="bg-dark text-white">
         <th>No</th>
-        <th>Order Id</th>
-        <th>Tanggal pesan</th>
-        <th>Pemesan</th>
         <th>Layanan</th>
+        <th>Terjual</th>
         <th>Harga</th>
+        <th>Total</th>
     </tr>
     @php
         $n = 1;
         $grand_total=0;
     @endphp
-    @foreach ($orderList as $order)
+    @foreach ($itemList as $item)
         @php
-            $grand_total += $order->payment->price;
+            $grand_total += $item['total_price'];
         @endphp
             <tr>
                 <td>{{ $n++ }}</td>
-                <td>ORD{{ $order->id_transaction }}</td>
-                <td>{{ $order->created_at }}</td>
-                <td>{{ $order->user->full_name }}</td>
-                <td>
-                    <ol class="list">
-                        @foreach ($order->items as $tri)
-                            <li>{{ $tri->product_name }}
-                                @if ($tri->product_name == 'Pakaian Harian')
-                                    <small>({{ number_format($tri->price, 0, ',', '.') }}x{{ $tri->berat }}Kg)</small>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ol>
-                </td>
-                <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},-
-                </td>
+                <td>{{ $item['product_name'] }}</td>
+                <td>{{ $item['total_terjual'] }}</td>
+                <td>Rp. {{ number_format($item['price'], 0, ',', '.') }},-</td>
+                <td>Rp. {{ number_format($item['total_price'], 0, ',', '.') }},-</td>
             </tr>
     @endforeach
     <tr class="bg-dark text-white">
-        <th colspan="5" class="text-center">TOTAL</th>
+        <th colspan="4" class="text-center">TOTAL</th>
         <th>
             Rp. {{ number_format($grand_total, 0, ',', '.') }},-
         </th>

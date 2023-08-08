@@ -7,7 +7,9 @@
         <th>Layanan</th>
         <th>Pembayaran</th>
         <th>Pengiriman</th>
+        @if(Auth::user()->role == 'admin')
         <th>Aksi</th>
+        @endif
     </tr>
     @php
         $n = 1;
@@ -40,21 +42,23 @@
                 Diambil customer
                 @endif
             </td>
-            <td>
-                @if ($order->transaction_status == 'accepted')
-                    <a href="{{ route('toProccess', ['id' => $order->id_transaction]) }}"
-                        onclick="return confirm('Proses pesanan?')" class="btn btn-primary">Proses pesanan</a>
-                
-                @elseif($order->transaction_status=='proccess')
-                    @if ($order->jadwal_jemput != null)                        
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#pengirimanModal"  onclick="add_shipment('{{$order->id_transaction}}')" class="btn btn-success">Jadwalkan pengiriman</a>
-                    @else
-                        <a href="{{ route('completeProccess', ['id' => $order->id_transaction]) }}" onclick="return confirm('Selesaikan pesanan?')" class="btn btn-success">Selesai</a>
+                @if(Auth::user()->role == 'admin')
+                <td>
+                    @if ($order->transaction_status == 'accepted')
+                        <a href="{{ route('toProccess', ['id' => $order->id_transaction]) }}"
+                            onclick="return confirm('Proses pesanan?')" class="btn btn-primary">Proses pesanan</a>
+                    
+                    @elseif($order->transaction_status=='proccess')
+                        @if ($order->jadwal_jemput != null)                        
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#pengirimanModal"  onclick="add_shipment('{{$order->id_transaction}}')" class="btn btn-success">Jadwalkan pengiriman</a>
+                        @else
+                            <a href="{{ route('completeProccess', ['id' => $order->id_transaction]) }}" onclick="return confirm('Selesaikan pesanan?')" class="btn btn-success">Selesai</a>
+                        @endif
+                    @elseif ($order->transaction_status=='shipment' && $order->jadwal_antar==null)
+                        Menunggu customer
                     @endif
-                @elseif ($order->transaction_status=='shipment' && $order->jadwal_antar==null)
-                    Menunggu customer
+                </td>
                 @endif
-            </td>
         </tr>
     @endif
     @endforeach

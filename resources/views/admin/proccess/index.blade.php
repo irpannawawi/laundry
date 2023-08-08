@@ -3,7 +3,7 @@
     <div class="page-title-box">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h6 class="page-title">Sedang diproses</h6>
+                <h6 class="page-title">Sedang Diproses</h6>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active"> </li>
                 </ol>
@@ -19,10 +19,10 @@
             <div class="card-header">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Dalam proses</a>
+                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Dalam Proses</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="tabPenjemputan" href="#">Jadwal pengiriman</a>
+                      <a class="nav-link" id="tabPenjemputan" href="#">Jadwal Pengiriman</a>
                     </li>
                   </ul>
             </div>

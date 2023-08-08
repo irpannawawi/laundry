@@ -8,7 +8,9 @@
         <th>Pembayaran</th>
         <th>Jadwal Pengiriman</th>
         <th>Alamat</th>
+        @if(Auth::user()->role == 'admin')
         <th>Aksi</th>
+        @endif
     </tr>
     @php
         $n = 1;
@@ -38,9 +40,11 @@
                         {{$order->user->address}}
                         {{$order->user->phone}}
                     </td>
+                    @if(Auth::user()->role == 'admin')
                     <td>
                         <a href="{{ route('toFinish', ['id' => $order->id_transaction]) }}" onclick="return confirm('Selesaikan pesanan?')" class="btn btn-success">Selesai</a>
                     </td>
+                    @endif
                 </tr>
 
         @endif

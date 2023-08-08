@@ -77,7 +77,7 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="{{route('publicProfile')}}">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <img class="rounded-circle" src="{{url('storage/avatar')}}/{{Auth::user()->avatar}}" alt="" style="height: 40px; width: 40px;">
                     </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

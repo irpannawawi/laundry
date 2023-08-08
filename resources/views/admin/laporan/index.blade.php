@@ -25,16 +25,17 @@
                 @endif
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" id="tabPesananBaru" href="#">Laporan keuangan</a>
+                      <a class="nav-link {{$page==1?'active':''}}" aria-current="page" id="tabPesananBaru" href="#">Laporan Keuangan
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="tabPenjemputan" href="#">Laporan Penjualan</a>
+                      <a class="nav-link {{$page==2?'active':''}}" id="tabPenjemputan" href="#">Laporan Penjualan</a>
                     </li>
                   </ul>
             </div>
             <div class="card-body">
-                <div id="pagePesananBaru">@include('admin.laporan.keuangan')</div>
-                <div id="pagePenjemputan" style="display: none;">@include('admin.order.jadwal_jemput')</div>
+                <div id="pagePesananBaru" style="display: {{$page==2?'none':''}}">@include('admin.laporan.keuangan')</div>
+                <div id="pagePenjemputan" style="display: {{$page==1?'none':''}};">@include('admin.laporan.penjualan')</div>
             </div>
         </div>
     </div>
