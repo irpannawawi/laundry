@@ -81,7 +81,7 @@
                                             <div class="card-body">
                                                 <ul class="list-unstyled d-flex justify-content-between">
                                                     <li class="text-right">Rp.
-                                                        {{ number_format($item->product->price, 0, ',', '.') }}{{$item->product_name == 'Pakaian Harian'?'/Kg':''}}</li>
+                                                        {{ number_format($item->product->price, 0, ',', '.') }}{{$item->product->product_name == 'Pakaian Harian'?'/Kg':''}}</li>
                                                 </ul>
                                                 <p href="#" class="h2 text-decoration-none text-dark">
                                                     {{ $item->product->product_name }}</p>
