@@ -36,7 +36,7 @@
             </td>
             <td>
                 @if($order->jadwal_jemput!=null)
-                <i class="fa fa-truck"></i>
+                <i class="fa fa-motorcycle"></i>
                 Perlu dikirim 
                 @else 
                 Diambil customer

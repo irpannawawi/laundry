@@ -1,12 +1,12 @@
 <table class="table table-sm table-borderd table-striped">
     <tr class="text-center">
         <th>No</th>
-        <th>Order Id</th>
-        <th>Tanggal Pesan</th>
+        <th nowrap>Order Id</th>
+        <th nowrap>Tanggal Pesan</th>
         <th>Pemesan</th>
         <th>Layanan</th>
         <th>Pembayaran</th>
-        <th>Jadwal Pengiriman</th>
+        <th nowrap>Jadwal Pengiriman</th>
         <th>Alamat</th>
         @if(Auth::user()->role == 'admin')
         <th>Aksi</th>

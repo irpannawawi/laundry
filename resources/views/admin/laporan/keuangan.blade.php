@@ -32,7 +32,7 @@
             <h2 align="center">Laporan Keuangan</h2>
         </th>
     </tr>
-    <tr class="bg-dark text-white">
+    <tr class="bg-dark text-white text-center">
         <th>No</th>
         <th>Order Id</th>
         <th>Tanggal pesan</th>
@@ -49,7 +49,7 @@
             $grand_total += $order->payment->price;
         @endphp
             <tr>
-                <td>{{ $n++ }}</td>
+                <td class="text-center">{{ $n++ }}</td>
                 <td>ORD{{ $order->id_transaction }}</td>
                 <td>{{ $order->created_at }}</td>
                 <td>{{ $order->user->full_name }}</td>

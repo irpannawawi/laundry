@@ -32,7 +32,7 @@
             <h2 align="center">Laporan Penjualan</h2>
         </th>
     </tr>
-    <tr class="bg-dark text-white">
+    <tr class="bg-dark text-white text-center">
         <th>No</th>
         <th>Layanan</th>
         <th>Terjual</th>
@@ -48,9 +48,9 @@
             $grand_total += $item['total_price'];
         @endphp
             <tr>
-                <td>{{ $n++ }}</td>
+                <td class="text-center">{{ $n++ }}</td>
                 <td>{{ $item['product_name'] }}</td>
-                <td>{{ $item['total_terjual'] }}</td>
+                <td class="text-center">{{ $item['total_terjual'] }}</td>
                 <td>Rp. {{ number_format($item['price'], 0, ',', '.') }},-</td>
                 <td>Rp. {{ number_format($item['total_price'], 0, ',', '.') }},-</td>
             </tr>

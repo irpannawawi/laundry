@@ -59,7 +59,7 @@ body
                         $grand_total += $order->payment->price;
                     @endphp
                         <tr>
-                            <td>{{ $n++ }}</td>
+                            <td class="text-center">{{ $n++ }}</td>
                             <td>ORD{{ $order->id_transaction }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>{{ $order->user->full_name }}</td>

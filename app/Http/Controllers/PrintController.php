@@ -32,7 +32,9 @@ class PrintController extends Controller
             
             $toAdd = [
                 'product_name' => $item->product_name,
-                'total_terjual' => TransactionItem::where('product_name', $item->product_name)->get()->sum('berat'),
+                'total_terjual' => TransactionItem::where('product_name', $item->product_name)->whereHas('transaction', function($query){
+                    $query->where('transaction_status', 'finish');
+                })->get()->sum('berat'),
                 'price' =>TransactionItem::where('product_name', $item->product_name)->get('price')[0]->price,
             ];
             $toAdd['total_price'] = $toAdd['total_terjual']*$toAdd['price'];
