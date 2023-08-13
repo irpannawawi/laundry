@@ -70,7 +70,7 @@
                 <li class="menu-title">Lain-lain</li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{url('assets/documents/')}}/panduan_admin.pdf" class=" waves-effect">
                         <i class="fa fa-book"></i>
                         <span>Panduan Penggunaan</span>
                     </a>

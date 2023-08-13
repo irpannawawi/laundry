@@ -80,8 +80,9 @@ Route::middleware(['auth', 'checkRole:admin,owner'])->group(function () {
     Route::post('/discounts', [DiscountController::class, 'create'])->name('discounts.create');
     Route::get('/discounts/{id}', [DiscountController::class, 'delete'])->name('discounts.delete');
 
-
-    
+    Route::get('/panduan_admin', function(){
+        Url('/assets/documents/panduan_admin.pdf');
+    })->name('panduan.admin');
 });
 
 // PUBLIC SECTION

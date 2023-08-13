@@ -182,11 +182,10 @@
                                 <div class="col-12 mt-3">
                                     <label for="discount">Voucher tersedia</label>
                                     <select class="form-control" name="discount" id="discount">
-                                        <option value="null">-</option>
+                                        <option value="-">-</option>
                                         @foreach ($discounts as $discount)
-                                            @if ($discount->discount_type=='item')
-                                                @if ($cart_list->where(['product_id'=>$discount->product_selected])->count()>0)
-                                                    
+                                            @if ($discount->discount_type=='all')
+                                                @if ($cart_list->where('product_id',$discount->product_selected)->count()>0)
                                                 <option value="{{$discount->total_discount}}">({{$discount->discount_code}}) {{$discount->discount_name}}</option>
                                                 @endif
                                             @else

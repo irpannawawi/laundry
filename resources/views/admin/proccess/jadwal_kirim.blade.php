@@ -22,7 +22,9 @@
                     <td>{{ $n++ }}</td>
                     <td>ORD{{ $order->id_transaction }}</td>
                     <td>{{ $order->created_at }}</td>
-                    <td>{{ $order->user->full_name }}</td>
+                    <td>@if($order->user->is_membership==1)
+                        <i class="fa fa-crown text-warning"></i>
+                        @endif{{ $order->user->full_name }}</td>
                     <td>
                         <ol class="list">
                             @foreach ($order->items as $tri)

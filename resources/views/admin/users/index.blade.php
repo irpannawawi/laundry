@@ -66,9 +66,9 @@
                                     <td>{{ $user->id }}</td>
                                     <td>
                                         @if ($user->is_membership==1)
-                                            <span class="badge bg-success">Member user</span>
+                                            <span class="badge bg-success"><i class="fa fa-crown"></i> Member User</span>
                                             @else
-                                            <span class="badge bg-warning">Bukan</span>
+                                            <span class="badge bg-danger">Non Member</span>
                                         @endif
                                     </td>
                                     <td>

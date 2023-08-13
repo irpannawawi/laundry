@@ -60,7 +60,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="/#panduan">Panduan</a>
+                            <a class="nav-link" href="{{url('assets/documents/')}}/panduan_pengguna.pdf">Panduan</a>
                         </li>
                         @if (Auth::user()==null)
                         <li class="nav-item">

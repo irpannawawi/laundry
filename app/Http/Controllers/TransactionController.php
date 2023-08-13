@@ -85,7 +85,7 @@ class TransactionController extends Controller
         
         $payment->price = $total_price;
         $discount = 0;
-        if(isset($request->discount)){
+        if($request->discount!='-'){
             $payment->with_discount = $request->discount;
             $discount = $request->discount;
         }
