@@ -51,6 +51,13 @@
                                 History
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{route('riwayatSaldo')}}" class="nav-link link-dark">
+                                <i class="fa fa-money"></i>
+                                History Saldo
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -112,7 +119,7 @@
                                 <div class="col-12">
                                     <h4>Berat Pakaian (Kg)</h4>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="berat" id="berat" value="1" />
+                                        <input type="number" class="form-control" name="berat" id="berat" value="1" min="1" />
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +174,40 @@
                                     </select>
                                 </div>
                             </div>
-    
+                            @if (Auth::user()->is_membership==1)
+                            <div class="row"  class="border border-warning m-1 p-4 bg-dark">
+                                <div class="col">
+                                    <span class="badge bg-warning"><i class="fas fa-crown"></i> Fitur spesial member </span>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label for="discount">Voucher tersedia</label>
+                                    <select class="form-control" name="discount" id="discount">
+                                        <option value="null">-</option>
+                                        @foreach ($discounts as $discount)
+                                            @if ($discount->discount_type=='item')
+                                                @if ($cart_list->where(['product_id'=>$discount->product_selected])->count()>0)
+                                                    
+                                                <option value="{{$discount->total_discount}}">({{$discount->discount_code}}) {{$discount->discount_name}}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{$discount->total_discount}}">({{$discount->discount_code}}) {{$discount->discount_name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check form-group m-2">
+                                        <input class="form-check-input" type="checkbox" value="{{(\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'masuk'])->sum('saldo'))-(\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'keluar'])->sum('saldo'))}}" id="flexCheckDefault" name="saldo">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Gunakan saldo Rp. {{number_format((\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'masuk'])->sum('saldo'))-(\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'keluar'])->sum('saldo')), 0, ',','.')}},-
+                                        </label>
+                                      </div>
+                                </div>
+
+                                
+
+                            </div>
+                            @endif
                             <div class="row">
                                 <button class="btn btn-primary" type="submit">Checkout</button>
                             </div>

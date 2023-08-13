@@ -48,6 +48,7 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>userid</th>
+                                <th>Membership</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -63,6 +64,13 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ strtoupper($user->role) }}</td>
                                     <td>{{ $user->id }}</td>
+                                    <td>
+                                        @if ($user->is_membership==1)
+                                            <span class="badge bg-success">Member user</span>
+                                            @else
+                                            <span class="badge bg-warning">Bukan</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <form id="formDelete" method="post" action="{{route('users.delete')}}">
                                             @csrf
@@ -101,16 +109,16 @@
                         @csrf
                         <div class="form-group mb-2">
                             <label for="name">Nama</label>
-                            <input type="text" class="form-control" name="name" autocomplete="off">
+                            <input type="text" class="form-control" name="name" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-2">
                             <label for="full_name">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="full_name" autocomplete="off">
+                            <input type="text" class="form-control" name="full_name" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-2">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" placeholder="example@domain.com" name="email"
-                                autocomplete="off">
+                                autocomplete="off" required>
                         </div>
 
                         <div class="form-group mb-2">
@@ -124,7 +132,7 @@
 
                         <div class="form-group mb-2">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -14,6 +15,7 @@ class CartController extends Controller
     {
         $data = [
             'cart_list'=> Cart::where('id_user', Auth::user()->id)->get(),
+            'discounts'=> Discount::get(),
         ];
 
         return view('public.cart', $data);

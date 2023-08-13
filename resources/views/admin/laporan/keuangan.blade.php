@@ -46,7 +46,7 @@
     @endphp
     @foreach ($orderList as $order)
         @php
-            $grand_total += $order->payment->price;
+            $grand_total += ($order->payment->price-($order->payment->with_saldo+$order->payment->with_discount));
         @endphp
             <tr>
                 <td class="text-center">{{ $n++ }}</td>
@@ -64,7 +64,7 @@
                         @endforeach
                     </ol>
                 </td>
-                <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},-
+                <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},-
                 </td>
             </tr>
     @endforeach

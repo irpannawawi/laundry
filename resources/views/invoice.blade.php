@@ -92,8 +92,21 @@
                                     <tr>
                                         <td class="no-line"></td>
                                         <td class="no-line"></td>
+                                        <td class="no-line text-center"><strong>Diskon</strong></td>
+                                        <td class="no-line text-right">- Rp. {{number_format($transaction->payment->with_discount, 0, ',','.')}},-</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="no-line"></td>
+                                        <td class="no-line"></td>
+                                        <td class="no-line text-center"><strong>Saldo</strong></td>
+                                        <td class="no-line text-right">- Rp. {{number_format($transaction->payment->with_saldo, 0, ',','.')}},-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="no-line"></td>
+                                        <td class="no-line"></td>
                                         <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right">Rp. {{number_format($transaction->payment->price, 0, ',','.')}},-</td>
+                                        <td class="no-line text-right">Rp. {{number_format($transaction->payment->price-$transaction->payment->with_saldo-$transaction->payment->with_discount, 0, ',','.')}},-</td>
                                     </tr>
                                 </tbody>
                             </table>

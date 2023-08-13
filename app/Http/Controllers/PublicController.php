@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Produk;
+use App\Models\Saldo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,5 +63,12 @@ class PublicController extends Controller
         }
         $user->save();
         return redirect()->back()->with('message', $message);
+    }
+
+    public function riwayatSaldo()
+    {
+        
+        $data['riwayat'] = Saldo::where('user_id', Auth::user()->id)->get();
+        return view('public.riwayat_saldo', $data);
     }
 }

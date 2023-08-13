@@ -46,13 +46,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{route('history')}}" class="nav-link active">
+                            <a href="{{route('history')}}" class="nav-link link-dark">
                                 <i class="fa fa-history"></i>
                                 History
                             </a>
                         </li>
+                        
+
                         <li class="nav-item">
-                            <a href="{{route('riwayatSaldo')}}" class="nav-link link-dark">
+                            <a href="{{route('riwayatSaldo')}}" class="nav-link active">
                                 <i class="fa fa-money"></i>
                                 History Saldo
                             </a>
@@ -67,67 +69,24 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
-                                    <th nowrap>Order Id</th>
-                                    <th>Tanggal</th>
-                                    <th nowrap>Layanan</th>
-                                    <th>Status Transaksi</th>
-                                    <th>Status Pembayaran</th>
-                                    <th nowrap>Total</th>
-                                    <th>Struk/Invoice</th>
+                                    <th nowrap>Tanggal</th>
+                                    <th>Keterangan</th>
+                                    <th nowrap>Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
-                                    $n = 1;
+                                    $no =1;
                                 @endphp
-                                @foreach ($transaction_list as $tr)
-                                @if ($tr->transaction_status=='finish' || $tr->transaction_status=='canceled')
-                                    <tr>
-                                        <td>{{ $n++ }}</td>
-                                        <td>ORD{{ $tr->id_transaction }}</td>
-                                        <td>{{ $tr->created_at }}</td>
-                                        <td>
-                                            <ol>
-                                                @foreach ($tr->items as $tri)
-                                                    <li>{{ $tri->product_name }}
-                                                        @if ($tri->product_name == 'Pakaian Harian')
-                                                            <small style="font-size: 12px">(Rp.
-                                                                {{ number_format($tri->price, 0, ',', '.') }},-x{{ $tri->berat }}Kg)</small>
-                                                        @else
-                                                            <small style="font-size: 12px">(Rp.
-                                                                {{ number_format($tri->price, 0, ',', '.') }},-)</small>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            </ol>
-                                        </td>
-                                        <td>
-                                            @if ($tr->transaction_status == 'canceled')
-                                            <span class="text-danger">Pesanan anda dibatalkan</span>
-                                            @else
-                                            
-                                            <span class="text-success">Pesanan Selesai</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($tr->transaction_status != 'canceled')
-                                                Lunas({{ $tr->payment->payment_type }})
-                                            @endif
-                                        </td>
-                                        <td nowrap>
-                                            Rp. {{ number_format($tr->payment->price-($tr->payment->with_saldo+$tr->payment->with_discount), 0, ',', '.') }},-
-                                        </td>
-                                        <td nowrap>
-                                            @if ($tr->transaction_status != 'canceled')
-                <a href="{{route('invoice', ['id'=>$tr->id_transaction])}}" class="link" target="__blank"><i class="fa fa-print"></i> Cetak</a>
-                                                
-                                            @endif
-                                        </td>
-                                    </tr>
+                                @foreach ($riwayat as $saldo)
                                     
-                                @endif
+                                <tr>
+                                    <td class="text-center">{{$no++}}</td>
+                                    <td>{{$saldo->created_at}}</td>
+                                    <td>{{$saldo->ket}}</td>
+                                    <td class="text-{{$saldo->type=='masuk'?'success':'danger'}}">Rp. {{number_format($saldo->saldo, 0, ',', '.')}},-</td>
+                                </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Dashboard_controller;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\Log_controller;
 use App\Http\Controllers\OrderController;
@@ -74,6 +75,12 @@ Route::middleware(['auth', 'checkRole:admin,owner'])->group(function () {
     Route::get('/laporan_keuangan/{start}/{end}', [PrintController::class, 'print_keuangan'])->name('printKeuangan');
     Route::get('/laporan_penjualan/{start}/{end}', [PrintController::class, 'print_penjualan'])->name('printPenjualan');
 
+    // discount section
+    Route::get('/discounts', [DiscountController::class, 'index'])->name('discounts');
+    Route::post('/discounts', [DiscountController::class, 'create'])->name('discounts.create');
+    Route::get('/discounts/{id}', [DiscountController::class, 'delete'])->name('discounts.delete');
+
+
     
 });
 
@@ -95,6 +102,7 @@ Route::middleware(['auth', 'checkRole:customer'])->group(function () {
     Route::post('/addTransaction', [TransactionController::class, 'add'])->name('addTransaction');
     Route::post('/addPaymentInfo', [TransactionController::class, 'addPaymentInfo'])->name('addPaymentInfo');
     Route::get('/confirmShipment/{id}', [ProccessController::class, 'toFinish'])->name('confirmShipment');
+    Route::get('/riwayatSaldo', [PublicController::class, 'riwayatSaldo'])->name('riwayatSaldo');
     
     
 });

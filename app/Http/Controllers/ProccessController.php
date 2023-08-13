@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalAntar;
+use App\Models\Saldo;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -87,7 +88,17 @@ class ProccessController extends Controller
             $trans->jadwal_antar->status = 'Terkirim';
         }
         $trans->save();
-
+        // 
+        if($trans->payment->with_saldo > 0)
+        {
+            $dataSaldo = [
+                'saldo'=>200,
+                'ket'=>'Penggunaan transaksi',
+                'user_id'=>$trans->user->id,
+                'type'=>'masuk'
+            ];
+            Saldo::create($dataSaldo);
+        }
         return redirect()->back()->with('msg', 'Berhasil, Pesanan telah selesai');
     }
 

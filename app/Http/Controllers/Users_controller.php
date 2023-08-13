@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Saldo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,20 @@ class Users_controller extends Controller
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->role = $request->input('role');
+            if(isset($request->is_membership)){
+                $user->is_membership = $request->input('is_membership');
+                if($request->is_membership == 1){
+                    // add 1000 balance 
+                    $saldo = 
+                    [
+                        'saldo'=>1000,
+                        'ket'=>'Bonus member baru',
+                        'type'=>'masuk',
+                        'user_id'=>$id
+                    ];
+                    Saldo::create($saldo);
+                }
+            }
             if($request->input('password')!= ''){
                 $user->password = Hash::make($request->input('password'));
             }

@@ -43,7 +43,7 @@
                     <div class="form-group mb-2">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="editEmail" placeholder="example@domain.com" name="email"
-                            autocomplete="off" value="{{$user->email}}">
+                            autocomplete="off" value="{{$user->email}}" required>
                     </div>
 
                     <div class="form-group mb-2">
@@ -54,7 +54,15 @@
                             <option {{$user->role=='customer'?'selected':''}} value="customer">CUSTOMER</option>
                         </select>
                     </div>
-
+                    @if($user->role=='customer')
+                    <div class="form-group mb-2">
+                        <label for="member">Member</label>
+                        <select name="is_membership" id="is_membership" class="form-control">
+                            <option {{$user->is_membership==0?'selected':''}} value="0">Tidak</option>
+                            <option {{$user->is_membership==1?'selected':''}} value="1">Ya</option>
+                        </select>
+                    </div>
+                    @endif
                     <div class="form-group mb-2">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password">

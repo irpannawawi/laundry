@@ -36,7 +36,7 @@
                             @endforeach
                         </ol>
                     </td>
-                    <td>Rp. {{ number_format($order->payment->price, 0, ',', '.') }},- ({{ $order->payment->payment_type }}) 
+                    <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},- ({{ $order->payment->payment_type }}) 
                         @if($order->payment->payment_type=='Transfer')
                         <a href="#" onclick="get_payment_info('{{$order->payment->payment_info}}')" data-bs-toggle="modal" data-bs-target="#infoPayment"><i class="fa fa-eye"></i></a>
                         @endif

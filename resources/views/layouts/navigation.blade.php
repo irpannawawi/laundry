@@ -28,6 +28,13 @@
                         <span>Produk</span>
                     </a>
                 </li>
+                
+                <li>
+                    <a href="{{route('discounts')}}" class=" waves-effect">
+                        <i class="fa fa-percent"></i>
+                        <span>Diskon</span>
+                    </a>
+                </li>
                 <li class="menu-title">Transaksi</li>
 
                 

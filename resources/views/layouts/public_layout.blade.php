@@ -79,6 +79,14 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="{{route('publicProfile')}}">
                         <img class="rounded-circle" src="{{url('storage/avatar')}}/{{Auth::user()->avatar}}" alt="" style="height: 40px; width: 40px;">
                     </a>
+                    @if (Auth::user()->is_membership==1)
+                    <a href="{{route('riwayatSaldo')}}"  style="text-decoration:none">
+                        <small>
+                            
+                            Rp. {{number_format((\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'masuk'])->sum('saldo'))-(\App\Models\Saldo::where(['user_id'=>Auth::user()->id, 'type'=>'keluar'])->sum('saldo')), 0,',','.')}},-
+                        </small>
+                        </a>
+                        @endif
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button class="nav-icon position-relative btn text-decoration-none text-danger" onclick="return confirm('Apakah anda akan keluar dari sesi ini?')" type="submit"><i class="fa fa-sign-in"></i></button>

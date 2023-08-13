@@ -62,3 +62,5 @@
         </th>
     </tr>
 </table>
+<span><small>*</small>Harga tidak termasuk diskon dan penggunaan saldo</span>
+

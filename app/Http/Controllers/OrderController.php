@@ -34,11 +34,11 @@ class OrderController extends Controller
         $trans = Transaction::find($id);
         $trans->transaction_status = 'canceled';
         if($trans->jadwal_jemput!=null){
-            $trans->jadwal_jemput->status = 'Barang telah diterima toko';
+            $trans->jadwal_jemput->status = 'dibatalkan';
         }
         $trans->save();
 
-        return redirect()->back()->with('msg', 'Pesanan telah diterima');
+        return redirect()->back()->with('msg', 'Pesanan telah dibatalkan');
     }
 
 }

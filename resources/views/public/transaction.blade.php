@@ -51,6 +51,12 @@
                                 History
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('riwayatSaldo')}}" class="nav-link link-dark">
+                                <i class="fa fa-money"></i>
+                                History Saldo
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -132,10 +138,10 @@
                                             @endif
                                         </td>
                                         <td nowrap>
-                                            Rp. {{ number_format($tr->payment->price, 0, ',', '.') }},-
+                                            Rp. {{ number_format(($tr->payment->price)-($tr->payment->with_saldo + $tr->payment->with_discount), 0, ',', '.') }},-
                                         </td>
                                         <td>
-                                            @if ($tr->payment->payment_type != 'COD' && $tr->payment->status != 'Paid')
+                                            @if (($tr->payment->payment_type != 'COD' && $tr->payment->status != 'Paid') && (($tr->payment->price) - ($tr->payment->with_saldo+$tr->payment->with_discount)) >0)
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal"
                                                     onclick="fill_id({{ $tr->id_transaction }})">Bayar</button>

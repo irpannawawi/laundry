@@ -51,6 +51,13 @@
                                 History
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{route('riwayatSaldo')}}" class="nav-link link-dark">
+                                <i class="fa fa-money"></i>
+                                History Saldo
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\JadwalJemput;
 use App\Models\Payment;
 use App\Models\Produk;
+use App\Models\Saldo;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Illuminate\Http\Request;
@@ -81,8 +82,30 @@ class TransactionController extends Controller
             $total_price += $price*$berat;
             TransactionItem::insert($data);
         }
-
+        
         $payment->price = $total_price;
+        $discount = 0;
+        if(isset($request->discount)){
+            $payment->with_discount = $request->discount;
+            $discount = $request->discount;
+        }
+        $total_price = $total_price-$discount;
+        if(isset($request->saldo)){
+            if($request->saldo < $total_price){
+                $saldo = $request->saldo;
+            }else{
+                $saldo = $total_price;
+            }
+            $payment->with_saldo = $saldo;
+            $dataSaldo = [
+                'saldo'=>$saldo,
+                'ket'=>'Penggunaan transaksi',
+                'user_id'=>Auth::user()->id,
+                'type'=>'keluar'
+            ];
+            Saldo::create($dataSaldo);
+        }
+        
         $payment->save();
 
         // add jadwal 
