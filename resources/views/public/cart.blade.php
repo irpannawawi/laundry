@@ -184,8 +184,20 @@
                                     <select class="form-control" name="discount" id="discount">
                                         <option value="-">-</option>
                                         @foreach ($discounts as $discount)
-                                            @if ($discount->discount_type=='all')
-                                                @if ($cart_list->where('product_id',$discount->product_selected)->count()>0)
+                                            @if ($discount->discount_type=='item')
+                                                @foreach ($cart_list as $lt)
+                                                @php
+                                                    if ($lt->id_product == $discount->product_selected){
+                                                        $has_product = true;
+                                                    }else {
+                                                        $has_product = false;
+                                                    }
+                                                @endphp  
+                                                @endforeach
+
+
+
+                                                @if ($has_product)
                                                 <option value="{{$discount->total_discount}}">({{$discount->discount_code}}) {{$discount->discount_name}}</option>
                                                 @endif
                                             @else
