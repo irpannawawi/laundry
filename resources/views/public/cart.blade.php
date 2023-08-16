@@ -175,6 +175,9 @@
                                 </div>
                             </div>
                             @if (Auth::user()->is_membership==1)
+                            @php
+                                $has_product = false;
+                            @endphp
                             <div class="row"  class="border border-warning m-1 p-4 bg-dark">
                                 <div class="col">
                                     <span class="badge bg-warning"><i class="fas fa-crown"></i> Fitur spesial member </span>
@@ -182,11 +185,12 @@
                                 <div class="col-12 mt-3">
                                     <label for="discount">Voucher tersedia</label>
                                     <select class="form-control" name="discount" id="discount">
-                                        <option value="-">-</option>
+                                        <option value="0">-</option>
                                         @foreach ($discounts as $discount)
                                             @if ($discount->discount_type=='item')
                                                 @foreach ($cart_list as $lt)
                                                 @php
+                                                
                                                     if ($lt->id_product == $discount->product_selected){
                                                         $has_product = true;
                                                     }else {

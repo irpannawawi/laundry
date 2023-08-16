@@ -40,7 +40,7 @@
           </div>
       </div>
   </div>
-  @if (Auth::user()== null)
+  {{-- @if (Auth::user()== null) --}}
 
       @section('extraJs')
           <script>
@@ -48,4 +48,4 @@
               myModal.show()
           </script>
       @endsection
-  @endif
+  {{-- @endif --}}
