@@ -2,8 +2,10 @@
   <div class="modal fade" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close float-end" onclick="modal_dismiss()" aria-label="Close"></button>
+            </div>
               <div class="modal-body">
-                <button type="button" class="btn-close float-end" aria-label="Close"></button>
                   <div id="template-mo-zay-hero-carousel-2" class="carousel slide" data-bs-ride="carousel">
                       <ol class="carousel-indicators">
                           <li data-bs-target="#template-mo-zay-hero-carousel-2" data-bs-slide-to="0" class="active">
@@ -47,6 +49,9 @@
           <script>
               var myModal = new bootstrap.Modal(document.getElementById('modalPromo'))
               myModal.show()
+              function modal_dismiss(){
+                myModal.hide()
+              }
           </script>
       @endsection
   {{-- @endif --}}
