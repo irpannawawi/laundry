@@ -69,4 +69,5 @@
             </div>
         </section>
         <!-- End Featured Product --> 
+        @include('components.modal_promo');
 @endsection
