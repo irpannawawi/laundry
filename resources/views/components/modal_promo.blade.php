@@ -43,7 +43,7 @@
           </div>
       </div>
   </div>
-  {{-- @if (Auth::user()== null) --}}
+  @if (Auth::user()== null)
 
       @section('extraJs')
           <script>
@@ -54,4 +54,4 @@
               }
           </script>
       @endsection
-  {{-- @endif --}}
+  @endif
