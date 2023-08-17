@@ -89,7 +89,7 @@ class ProccessController extends Controller
         }
         $trans->save();
         // 
-        if($trans->payment->with_saldo > 0)
+        if($trans->user->is_membership)
         {
             $dataSaldo = [
                 'saldo'=>200,
