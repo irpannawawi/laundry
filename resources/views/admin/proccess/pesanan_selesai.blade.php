@@ -30,7 +30,10 @@
                     @endforeach
                 </ol>
             </td>
-            <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},- ({{ $order->payment->payment_type }})
+            <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},- ({{ $order->payment->payment_type }}) 
+                <br>
+                <x-badge-discount :discount="$order->payment->with_discount"/>
+                    <x-badge-saldo :saldo="$order->payment->with_saldo"/>
             </td>
             <td>
                 <a href="{{route('invoice', ['id'=>$order->id_transaction])}}" target="__blank"><i class="fa fa-print"></i> Cetak</a>

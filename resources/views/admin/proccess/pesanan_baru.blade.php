@@ -35,6 +35,8 @@
                 </ol>
             </td>
             <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},- ({{ $order->payment->payment_type }})
+                <x-badge-discount :discount="$order->payment->with_discount"/>
+                    <x-badge-saldo :saldo="$order->payment->with_saldo"/>
             </td>
             <td>
                 @if($order->jadwal_jemput!=null)

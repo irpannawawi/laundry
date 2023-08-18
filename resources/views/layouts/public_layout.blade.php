@@ -176,7 +176,7 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Script -->
     <script type="text/javascript">
         (function() {
-            $('.from-prevent-multiple-submits').on('click', function() {
+            $('form').on('submit', function() {
                 $('.from-prevent-multiple-submits').attr('disabled', 'true');
             })
         })();

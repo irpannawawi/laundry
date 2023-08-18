@@ -106,7 +106,10 @@ class TransactionController extends Controller
             ];
             Saldo::create($dataSaldo);
         }
-        
+        if($payment->price - ($payment->with_saldo+$payment->with_discount) < 1 )
+        {
+            $payment->status = 'Paid';
+        }
         $payment->save();
 
         // add jadwal 

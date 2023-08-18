@@ -37,9 +37,11 @@
                         </ol>
                     </td>
                     <td>Rp. {{ number_format($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount, 0, ',', '.') }},- ({{ $order->payment->payment_type }}) 
-                        @if($order->payment->payment_type=='Transfer')
+                        @if($order->payment->payment_type=='Transfer' && ($order->payment->price-$order->payment->with_saldo-$order->payment->with_discount) > 0)
                         <a href="#" onclick="get_payment_info('{{$order->payment->payment_info}}')" data-bs-toggle="modal" data-bs-target="#infoPayment"><i class="fa fa-eye"></i></a>
                         @endif
+                        <x-badge-discount :discount="$order->payment->with_discount"/>
+                            <x-badge-saldo :saldo="$order->payment->with_saldo"/>
                     </td>
                     @if(Auth::user()->role == 'admin')
                     <td>

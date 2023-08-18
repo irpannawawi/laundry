@@ -136,6 +136,8 @@
                                             @if ($tr->transaction_status != 'canceled')
                                                 {{ $tr->payment->status == 'Paid' ? 'Lunas' : $tr->payment->status }}({{ $tr->payment->payment_type }})
                                             @endif
+                                            <x-badge-discount :discount="$tr->payment->with_discount"/>
+                                            <x-badge-saldo :saldo="$tr->payment->with_saldo"/>
                                         </td>
                                         <td nowrap>
                                             Rp. {{ number_format(($tr->payment->price)-($tr->payment->with_saldo + $tr->payment->with_discount), 0, ',', '.') }},-
