@@ -63,7 +63,7 @@
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
-                    <form action="{{route('addTransaction')}}" method="POST">
+                    <form action="{{route('addTransaction')}}"  method="POST">
                         @csrf
                         <div class="card-body">
                             @if ($cart_list->count() == 0)
@@ -224,7 +224,7 @@
                             </div>
                             @endif
                             <div class="row">
-                                <button class="btn btn-primary" type="submit">Checkout</button>
+                                <button class="btn btn-primary from-prevent-multiple-submits" type="submit">Checkout</button>
                             </div>
                         </div>
                     </form>
