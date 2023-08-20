@@ -53,7 +53,7 @@
                                                         @csrf
                                                         @method('delete')
                                                         <button class="btn btn-outline-danger form-control btn-sm mt-2"  onclick="return confirm('Hapus produk?')" type="submit">
-                                                            Delete
+                                                            Hapus
                                                         </button>
                                                         @endif
                                                 </form>

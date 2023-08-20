@@ -61,7 +61,7 @@
                                     @if(Auth::user()->role == 'admin')
                                     <td>                                        
                                         <div class="btn-group">
-                                            <a href="{{route('discounts.delete', ['id'=>$discount->id_discount])}}" onclick="return confirm('Hapus diskon?')" class="btn btn-danger">hapus</a>
+                                            <a href="{{route('discounts.delete', ['id'=>$discount->id_discount])}}" onclick="return confirm('Hapus diskon?')" class="btn btn-danger">Hapus</a>
                                         </div>
                                     </td>
                                     @endif
