@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saldo;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -80,6 +81,9 @@ class Users_controller extends Controller
     public function delete(Request $request)
     {
         $id = $request->id;
+
+        // delete all transaction
+        Transaction::where('id_user', $id)->delete();
         User::where('id', $id)->delete();
         return redirect()->back();
     }
