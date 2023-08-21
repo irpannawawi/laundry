@@ -29,7 +29,7 @@
                     @csrf
                     @method('put')
                     <div class="form-group mb-2">
-                        <label for="name">Nama</label>
+                        <label for="name">Username</label>
                         <input type="text" value="{{$user->name}}" class="form-control" name="name" id="editName" autocomplete="off" required>
                         <input type="hidden" value="{{$user->id}}" name="id"  required>
                     </div>

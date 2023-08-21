@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <label for="name">Nama pengguna</label>
+                                        <label for="name">Username</label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             autocomplete="off" value="{{ $profile->name }}">
                                     </div>

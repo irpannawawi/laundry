@@ -108,7 +108,7 @@
                     <form method="POST" action="{{ route('users.store') }}">
                         @csrf
                         <div class="form-group mb-2">
-                            <label for="name">Nama</label>
+                            <label for="name">Username</label>
                             <input type="text" class="form-control" name="name" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-2">
