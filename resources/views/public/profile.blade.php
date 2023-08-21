@@ -139,7 +139,7 @@
 
                                 <div class="col-md-6 col-lg-6 col-12">
                                     <div class="form-group">
-                                        <label for="confirm_password">Password Lama</label>
+                                        <label for="confirm_password">Konfirmasi Password Baru</label>
                                         <input type="password" class="form-control" id="confirm_password"
                                             name="confirm_password">
                                     </div>

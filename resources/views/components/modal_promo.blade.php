@@ -5,8 +5,8 @@
             <div class="modal-header">
                 <button type="button" class="btn-close float-end" onclick="modal_dismiss()" aria-label="Close"></button>
             </div>
-              <div class="modal-body">
-                  <div id="template-mo-zay-hero-carousel-2" class="carousel slide" data-bs-ride="carousel">
+              <div class="modal-body p-0">
+                  <div id="template-mo-zay-hero-carousel-2" class="m-0 carousel slide" data-bs-ride="carousel">
                       <ol class="carousel-indicators">
                           <li data-bs-target="#template-mo-zay-hero-carousel-2" data-bs-slide-to="0" class="active">
                           </li>
