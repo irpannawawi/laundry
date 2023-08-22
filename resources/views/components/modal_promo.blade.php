@@ -2,10 +2,8 @@
   <div class="modal fade" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close float-end" onclick="modal_dismiss()" aria-label="Close"></button>
-            </div>
-              <div class="modal-body p-0">
+            <div class="modal-body p-2">
+                  <button type="button" style="position:absolute; z-index:2; right:20px" class="btn-close float-end" onclick="modal_dismiss()" aria-label="Close"></button>
                   <div id="template-mo-zay-hero-carousel-2" class="m-0 carousel slide" data-bs-ride="carousel">
                       <ol class="carousel-indicators">
                           <li data-bs-target="#template-mo-zay-hero-carousel-2" data-bs-slide-to="0" class="active">
@@ -16,17 +14,17 @@
                       <div class="carousel-inner">
                           <div class="carousel-item active">
                               <div class="container">
-                                  <img src="assets/images/gallery/brand1.png" alt="brand1" class="img-fluid">
+                                  <img src="assets/images/gallery/banner_promo1.png" alt="banner_promo1" class="img-fluid">
                               </div>
                           </div>
                           <div class="carousel-item">
                               <div class="container">
-                                  <img src="assets/images/gallery/brand2.png" alt="brand1" class="img-fluid">
+                                  <img src="assets/images/gallery/banner_promo2.png" alt="banner_promo1" class="img-fluid">
                               </div>
                           </div>
                           <div class="carousel-item">
                               <div class="container">
-                                  <img src="assets/images/gallery/brand3.png" alt="brand1" class="img-fluid">
+                                  <img src="assets/images/gallery/banner_promo3.png" alt="banner_promo1" class="img-fluid">
                               </div>
                           </div>
                       </div>
