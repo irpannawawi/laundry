@@ -33,8 +33,8 @@
                   </ul>
             </div>
             <div class="card-body">
-                <div id="pagePesananBaru">@include('admin.order.pesanan_baru')</div>
-                <div id="pagePenjemputan" style="display: none;">@include('admin.order.jadwal_jemput')</div>
+                <div class="table-responsive" id="pagePesananBaru">@include('admin.order.pesanan_baru')</div>
+                <div class="table-responsive" id="pagePenjemputan" style="display: none;">@include('admin.order.jadwal_jemput')</div>
             </div>
         </div>
     </div>

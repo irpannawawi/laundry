@@ -27,8 +27,8 @@
                   </ul>
             </div>
             <div class="card-body">
-                <div id="pagePesananBaru">@include('admin.proccess.pesanan_baru')</div>
-                <div id="pagePenjemputan" style="display: none;">@include('admin.proccess.jadwal_kirim')</div>
+                <div class="table-responsive" id="pagePesananBaru">@include('admin.proccess.pesanan_baru')</div>
+                <div class="table-responsive" id="pagePenjemputan" style="display: none;">@include('admin.proccess.jadwal_kirim')</div>
             </div>
         </div>
     </div>

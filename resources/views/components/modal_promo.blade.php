@@ -1,6 +1,6 @@
   <!-- Modal -->
   <div class="modal fade" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-body p-2">
                   <button type="button" style="position:absolute; z-index:2; right:20px" class="btn-close float-end" onclick="modal_dismiss()" aria-label="Close"></button>

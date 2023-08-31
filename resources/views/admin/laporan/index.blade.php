@@ -33,9 +33,9 @@
                     </li>
                   </ul>
             </div>
-            <div class="card-body">
-                <div id="pagePesananBaru" style="display: {{$page==2?'none':''}}">@include('admin.laporan.keuangan')</div>
-                <div id="pagePenjemputan" style="display: {{$page==1?'none':''}};">@include('admin.laporan.penjualan')</div>
+            <div class="card-body ">
+                <div id="pagePesananBaru" class="table-responsive" style="display: {{$page==2?'none':''}}">@include('admin.laporan.keuangan')</div>
+                <div id="pagePenjemputan" class="table-responsive" style="display: {{$page==1?'none':''}};">@include('admin.laporan.penjualan')</div>
             </div>
         </div>
     </div>
