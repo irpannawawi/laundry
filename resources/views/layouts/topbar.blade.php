@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box mt-2">
+            <div class="navbar-brand-box ">
                 <a href="{{route('dashboard')}}" class="mt-2 logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{url('assets')}}/images/logo1.png" alt="" style="height:25px;" > <h4>Naya Laundry</h4>
@@ -14,7 +14,7 @@
 
                 <a href="{{route('dashboard')}}" class="mt-2 logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{url('assets')}}/images/logo1.png" alt="" height="25"> <h4>Naya Laundry</h4>
+                        <img src="{{url('assets')}}/images/logo1.png" alt="" style="width: 30px; margin: 0px auto;"> <h4>Naya Laundry</h4>
                     </span>
                     <span class="logo-lg">
                         <img src="{{url('assets')}}/images/logo1.png" alt="" style="width:45px; margin: 0px auto;"> <h4>Naya Laundry</h4>

@@ -21,6 +21,14 @@
         <!-- App Css-->
         <link href="{{url('assets')}}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            .btn-danger {
+                background-color: #EC5461
+            }
+            .btn-primary{
+                background-color: #626ED4
+            }
+        </style>
     </head>
 
     <body data-sidebar="dark">
