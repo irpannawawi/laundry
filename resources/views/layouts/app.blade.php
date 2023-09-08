@@ -28,6 +28,10 @@
             .btn-primary{
                 background-color: #626ED4
             }
+            
+            .btn-success{
+                background-color: #02A499
+            }
         </style>
     </head>
 
