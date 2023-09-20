@@ -31,8 +31,8 @@
                     <div class="col-3">
                         <form action="{{route('users')}}" method="GET">
                             @csrf
-                            <div class="input-group col-3">
-                                <input type="search" name="keyword" id="keyword" class="form-control">
+                            <div class="input-group col-3 pt-3 pb-3">
+                                <input type="search" name="keyword" id="keyword" class="form-control form-control-sm">
                                 <input type="submit" value="Cari" class="btn btn-secondary">
                             </div>
                         </form>
