@@ -75,9 +75,11 @@
                                         <form id="formDelete" method="post" action="{{route('users.delete')}}">
                                             @csrf
                                             @method('delete')
-                                            <a class="btn btn-sm btn-warning" href="{{route('users.edit', ['id'=>$user->id])}}" title="Edit"><i class="fa fa-edit"></i></a>
-                                            <input type="hidden" value="{{$user->id}}" name="id">
-                                        <button type="submit" title="Hapus" class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></button>
+                                            <div class="btn-group">
+                                                <a class="btn btn-sm btn-warning" href="{{route('users.edit', ['id'=>$user->id])}}" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <input type="hidden" value="{{$user->id}}" name="id">
+                                                <button type="submit" title="Hapus" class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></button>
+                                            </div>
                                     </form>
                                     </td>
                                 </tr>
